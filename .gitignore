@@ -9,6 +9,7 @@ build/
 *.iws
 *.iml
 *.ipr
+*.hprof
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
