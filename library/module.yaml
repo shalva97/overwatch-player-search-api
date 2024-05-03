@@ -1,15 +1,21 @@
 product:
   type: lib
   platforms:
-#    - macosX64
+    - macosX64
+    - macosArm64
     - jvm
 #    - mingwX64
 
 dependencies:
-  - "io.ktor:ktor-client-content-negotiation:2.3.10"
-  - "io.ktor:ktor-serialization-kotlinx-json:2.3.10"
-  - "io.ktor:ktor-client-core:2.3.10"
-  - "io.ktor:ktor-client-okhttp:2.3.10"
+  - io.ktor:ktor-client-content-negotiation:2.3.10
+  - io.ktor:ktor-serialization-kotlinx-json:2.3.10
+  - io.ktor:ktor-client-core:2.3.10
+
+dependencies@jvm:
+  - io.ktor:ktor-client-okhttp:2.3.10
+
+dependencies@macos:
+  - io.ktor:ktor-client-curl:2.3.10
 
 settings:
   kotlin:
