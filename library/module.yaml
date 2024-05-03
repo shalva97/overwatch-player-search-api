@@ -24,3 +24,6 @@ settings:
       json
   jvm:
     target: 17
+  publishing:
+    version: "1.0"
+    group: "io.github.shalva97.overwatch_player_search_api"
