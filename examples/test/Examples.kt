@@ -5,11 +5,8 @@ import kotlin.test.Test
 class Examples {
     @Test
     fun searchPlayer() = runBlocking {
-        val playerSearch = PlayerSearch()
-        println(playerSearch.searchForPlayer("shalva"))
-        playerSearch.close()
+        val search = PlayerSearch()
+        val res = search.searchForPlayer("shalva")
+        println(res)
     }
-
-
-
 }

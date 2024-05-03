@@ -1,13 +1,14 @@
 package io.github.shalva97.overwatch_player_search_api
 
+import io.github.shalva97.overwatch_player_search_api.models.OverwatchPlayer
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.request.*
 import io.ktor.serialization.kotlinx.json.*
 import io.github.shalva97.overwatch_player_search_api.models.OverwatchPlayerDTO
+import io.github.shalva97.overwatch_player_search_api.models.toDomain
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 
@@ -22,9 +23,12 @@ class PlayerSearch {
         Json.parseToJsonElement(rawOwData)
     }
 
-    suspend fun searchForPlayer(name: String): List<OverwatchPlayerDTO> {
+    suspend fun searchForPlayer(name: String): List<OverwatchPlayer> {
         return client.get("https://overwatch.blizzard.com/en-us/search/account-by-name/$name/")
             .body<List<OverwatchPlayerDTO>>()
+            .map {
+                it.toDomain(getNamecard(it.namecard), getAvatar(it.portrait), getTitle(it.title))
+            }
     }
 
     fun getAvatar(id: String): String? {

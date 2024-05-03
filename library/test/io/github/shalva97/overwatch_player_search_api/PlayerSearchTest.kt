@@ -6,11 +6,6 @@ import kotlin.test.assertEquals
 class PlayerSearchTest {
 
     @Test
-    fun getAvatar() {
-
-    }
-
-    @Test
     fun getTitle() {
         val search = PlayerSearch()
 
