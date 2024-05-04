@@ -27,7 +27,10 @@ class PlayerSearch {
         return client.get("https://overwatch.blizzard.com/en-us/search/account-by-name/$name/")
             .body<List<OverwatchPlayerDTO>>()
             .map {
-                it.toDomain(getNamecard(it.namecard), getAvatar(it.portrait), getTitle(it.title))
+                it.toDomain(
+                    it.namecard?.let { it1 -> getNamecard(it1) },
+                    it.portrait?.let { it1 -> getAvatar(it1) },
+                    it.title?.let { it1 -> getTitle(it1) })
             }
     }
 

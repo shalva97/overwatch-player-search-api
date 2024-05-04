@@ -9,4 +9,11 @@ class Examples {
         val res = search.searchForPlayer("shalva")
         println(res)
     }
+
+    @Test
+    fun searchPlayer2() = runBlocking {
+        val search = PlayerSearch()
+        val res = search.searchForPlayer("bigman")
+        println(res)
+    }
 }
