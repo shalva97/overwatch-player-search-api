@@ -56,6 +56,10 @@ class PlayerSearch {
             ?.jsonPrimitive?.content
     }
 
+    fun getPlayerProfile(url: String) {
+
+    }
+
     fun close() {
         client.close()
     }
