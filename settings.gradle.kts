@@ -17,6 +17,4 @@ dependencyResolutionManagement {
 
 plugins {
     id("org.jetbrains.amper.settings.plugin").version("0.2.3-dev-473")
-//    kotlin("plugin.serialization") version "1.9.23"
 }
-//rootProject.name = "overwatch-player-search-api"

@@ -1,6 +1,6 @@
 package io.github.shalva97.overwatch_player_search_api
 
-val someRandomGuy = """
+internal val someRandomGuy = """
 
 <!DOCTYPE html><html lang="en-US"><head profile="http://www.w3.org/2005/10/profile"><title>Overwatch 2</title><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><link rel="icon" type="image/x-icon" href="https://static.playoverwatch.com/img/favicon-2f5255d1c6.ico"><script>var BlzCookieConsent = JSON.parse('{"host":".blizzard.com","cookieInfoUrlPattern":"/cookies/?${'$'}","onetrustScriptUrl":"https://cdn.cookielaw.org/scripttemplates/otSDKStub.js","onetrustDomainScript":"22011b0f-2c46-49a3-a7bf-5f98a4d4da65"}');</script><script type="text/javascript" src="https://static.playoverwatch.com/js/cookie-consent-filter-24bef77b26.js"></script><script>window.addEventListener('CookieConsentChange', (event) => {
   if (typeof BlzCookieConsent !== 'undefined' && BlzCookieConsent.initialized && BlzCookieConsent.isPerformanceStorageAllowed() && !window.document.querySelector('script[data-optimizely]')) {

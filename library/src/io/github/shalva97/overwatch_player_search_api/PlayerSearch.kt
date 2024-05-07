@@ -12,7 +12,7 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 
-class PlayerSearch {
+public class PlayerSearch {
     private val client = HttpClient {
         install(ContentNegotiation) {
             json()
@@ -23,7 +23,7 @@ class PlayerSearch {
         Json.parseToJsonElement(rawOwData)
     }
 
-    suspend fun searchForPlayer(name: String): List<OverwatchPlayer> {
+    public suspend fun searchForPlayer(name: String): List<OverwatchPlayer> {
         return client.get("https://overwatch.blizzard.com/en-us/search/account-by-name/$name/")
             .body<List<OverwatchPlayerDTO>>()
             .map {
@@ -34,14 +34,14 @@ class PlayerSearch {
             }
     }
 
-    fun getAvatar(id: String): String? {
+    public fun getAvatar(id: String): String? {
         return owData.jsonObject["avatars"]
             ?.jsonObject?.get(id)
             ?.jsonObject?.get("icon")
             ?.jsonPrimitive?.content
     }
 
-    fun getTitle(id: String): String? {
+    public fun getTitle(id: String): String? {
         return owData.jsonObject["titles"]
             ?.jsonObject?.get(id)
             ?.jsonObject?.get("name")
@@ -49,18 +49,18 @@ class PlayerSearch {
             ?.jsonPrimitive?.content
     }
 
-    fun getNamecard(id: String): String? {
+    public fun getNamecard(id: String): String? {
         return owData.jsonObject["namecards"]
             ?.jsonObject?.get(id)
             ?.jsonObject?.get("icon")
             ?.jsonPrimitive?.content
     }
 
-    fun getPlayerProfile(url: String) {
-
+    private fun getPlayerProfile(url: String) {
+        // TODO return  player profile
     }
 
-    fun close() {
+    public fun close() {
         client.close()
     }
 }

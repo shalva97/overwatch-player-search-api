@@ -21,6 +21,8 @@ dependencies@macos:
 
 settings:
   kotlin:
+    freeCompilerArgs:
+      - "-Xexplicit-api=strict"
     languageVersion: 1.9
     serialization:
       json

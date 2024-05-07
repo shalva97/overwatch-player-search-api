@@ -3,17 +3,17 @@ package io.github.shalva97.overwatch_player_search_api
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class PlayerSearchTest {
+public class PlayerSearchTest {
 
     @Test
-    fun getTitle() {
+    public fun getTitle() {
         val search = PlayerSearch()
 
         assertEquals("Haunted Shadow", search.getTitle("0x0250000000006B2E"))
     }
 
     @Test
-    fun getNamecard() {
+    public fun getNamecard() {
         val search = PlayerSearch()
 
         assertEquals(
@@ -23,7 +23,7 @@ class PlayerSearchTest {
     }
 
     @Test
-    fun getIcon() {
+    public fun getIcon() {
         val search = PlayerSearch()
 
         assertEquals(

@@ -6,9 +6,9 @@ import com.mohamedrejeb.ksoup.html.parser.KsoupHtmlHandler
 import com.mohamedrejeb.ksoup.html.parser.KsoupHtmlParser
 import kotlin.test.Test
 
-class LearningTest {
+public class LearningTest {
     @Test
-    fun exampleStats2() {
+    public fun exampleStats2() {
         val html = "<html><head><title>One</title></head><body>Two</body></html>"
         val doc: Document = Ksoup.parse(html = someRandomGuy)
         val firstOption = doc.select(".mouseKeyboard-view.Profile-view")[0]
@@ -23,7 +23,7 @@ class LearningTest {
     }
 
     @Test
-    fun exampleStats() {
+    public fun exampleStats() {
         val handler = KsoupHtmlHandler
             .Builder()
             .onOpenTag(block = { name, attributes, isImplied ->
@@ -43,7 +43,7 @@ class LearningTest {
     }
 
     @Test
-    fun blah() {
+    public fun blah() {
         val html = """
     <html>
         <head>
