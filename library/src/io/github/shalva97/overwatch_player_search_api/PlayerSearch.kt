@@ -22,7 +22,7 @@ public class PlayerSearch {
     }
     private val client = HttpClient {
         install(ContentNegotiation) {
-            jsonParser
+            json(jsonParser)
         }
     }
 
@@ -44,8 +44,8 @@ public class PlayerSearch {
     public suspend fun getPlayerProfile(playerTag: String): PlayerProfileStats {
         val tagForOwapi = playerTag.replace('#', '-')
 
-        val response = client.get("https://owapi.eu/stats/pc/$tagForOwapi/complete").bodyAsText()
-        return jsonParser.decodeFromString(response)
+        return client.get("https://owapi.eu/stats/pc/$tagForOwapi/complete")
+            .body<PlayerProfileStats>()
     }
 
     public fun getAvatar(id: String): String? {
