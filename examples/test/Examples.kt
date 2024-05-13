@@ -16,4 +16,11 @@ class Examples {
         val res = search.searchForPlayer("bigman")
         println(res)
     }
+
+    @Test
+    fun getPlayerProfile(): Unit = runBlocking {
+        val search = PlayerSearch()
+        val message = search.getPlayerProfile("shalva#21962")
+        println(message)
+    }
 }

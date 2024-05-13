@@ -2,11 +2,16 @@ package io.github.shalva97.overwatch_player_search_api
 
 import com.fleeksoft.ksoup.Ksoup
 import com.fleeksoft.ksoup.nodes.Document
-import com.mohamedrejeb.ksoup.html.parser.KsoupHtmlHandler
-import com.mohamedrejeb.ksoup.html.parser.KsoupHtmlParser
+import io.github.shalva97.overwatch_player_search_api.models.profile.PlayerProfileStats
+import kotlinx.serialization.json.Json
 import kotlin.test.Test
 
 public class LearningTest {
+    private val jsonParser = Json {
+        ignoreUnknownKeys = true
+        isLenient = true
+    }
+
     @Test
     public fun exampleStats2() {
         val html = "<html><head><title>One</title></head><body>Two</body></html>"
@@ -24,6 +29,6 @@ public class LearningTest {
 
     @Test
     public fun exampleStats() {
-
+        println(jsonParser.decodeFromString<PlayerProfileStats>(randomPlayerJSON))
     }
 }

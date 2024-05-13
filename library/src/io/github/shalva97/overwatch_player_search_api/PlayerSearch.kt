@@ -7,15 +7,22 @@ import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.request.*
 import io.ktor.serialization.kotlinx.json.*
 import io.github.shalva97.overwatch_player_search_api.models.OverwatchPlayerDTO
+import io.github.shalva97.overwatch_player_search_api.models.profile.PlayerProfileStats
 import io.github.shalva97.overwatch_player_search_api.models.toDomain
+import io.ktor.client.statement.*
+import io.ktor.http.*
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 
 public class PlayerSearch {
+    private val jsonParser = Json {
+        ignoreUnknownKeys = true
+        isLenient = true
+    }
     private val client = HttpClient {
         install(ContentNegotiation) {
-            json()
+            jsonParser
         }
     }
 
@@ -32,6 +39,13 @@ public class PlayerSearch {
                     it.portrait?.let { it1 -> getAvatar(it1) },
                     it.title?.let { it1 -> getTitle(it1) })
             }
+    }
+
+    public suspend fun getPlayerProfile(playerTag: String): PlayerProfileStats {
+        val tagForOwapi = playerTag.replace('#', '-')
+
+        val response = client.get("https://owapi.eu/stats/pc/$tagForOwapi/complete").bodyAsText()
+        return jsonParser.decodeFromString(response)
     }
 
     public fun getAvatar(id: String): String? {
@@ -54,10 +68,6 @@ public class PlayerSearch {
             ?.jsonObject?.get(id)
             ?.jsonObject?.get("icon")
             ?.jsonPrimitive?.content
-    }
-
-    private fun getPlayerProfile(url: String) {
-        // TODO return  player profile
     }
 
     public fun close() {
