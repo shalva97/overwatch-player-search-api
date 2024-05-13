@@ -1,4 +1,4 @@
-package io.github.shalva97.overwatch_player_search_api
+package io.github.shalva97.overwatch_player_search_api.sample_data
 
 internal val someRandomGuy = """
 
