@@ -13,6 +13,9 @@ dependencies:
   - com.mohamedrejeb.ksoup:ksoup-html:0.3.1
   - com.fleeksoft.ksoup:ksoup:0.1.2
 
+test-dependencies:
+  - org.jetbrains.kotlinx:kotlinx-io-core:0.3.5
+
 dependencies@jvm:
   - io.ktor:ktor-client-okhttp:2.3.10
 

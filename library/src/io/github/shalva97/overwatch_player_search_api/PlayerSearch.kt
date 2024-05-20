@@ -26,8 +26,16 @@ public class PlayerSearch {
         }
     }
 
-    private val owData by lazy {
-        Json.parseToJsonElement(rawOwData)
+    private val owAvatars by lazy {
+        Json.parseToJsonElement("avatars") // TODO load text fom resources
+    }
+
+    private val owNamecards by lazy {
+        Json.parseToJsonElement("namecards")
+    }
+
+    private val owTitles by lazy {
+        Json.parseToJsonElement("titles")
     }
 
     public suspend fun searchForPlayer(name: String): List<OverwatchPlayer> {
@@ -49,14 +57,14 @@ public class PlayerSearch {
     }
 
     public fun getAvatar(id: String): String? {
-        return owData.jsonObject["avatars"]
+        return owAvatars
             ?.jsonObject?.get(id)
             ?.jsonObject?.get("icon")
             ?.jsonPrimitive?.content
     }
 
     public fun getTitle(id: String): String? {
-        return owData.jsonObject["titles"]
+        return owTitles
             ?.jsonObject?.get(id)
             ?.jsonObject?.get("name")
             ?.jsonObject?.get("en_US")
@@ -64,7 +72,7 @@ public class PlayerSearch {
     }
 
     public fun getNamecard(id: String): String? {
-        return owData.jsonObject["namecards"]
+        return owNamecards
             ?.jsonObject?.get(id)
             ?.jsonObject?.get("icon")
             ?.jsonPrimitive?.content
