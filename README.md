@@ -25,7 +25,7 @@ maven {
 Add dependency
 
 ```kotlin
-implementation("io.github.shalva97.overwatch_player_search_api:library:1.1")
+implementation("io.github.shalva97.overwatch_player_search_api:library:1.3")
 ```
 
 # Usage
@@ -37,4 +37,5 @@ data class, which will contain search results
 [OverwatchPlayer(battleTag=shalva#21966, isPublic=true, lastUpdated=1715113111, namecard=https://d15f34w2p8l1cc.cloudfront.net/overwatch/7226589f015117e841d23356bc45835409c38ba8fb0d1451ca9268961fffde0f.png, portrait=null, title=Haunted Shadow, url=e156ad86a570d6ffb8a921a2%7C44a3944e9291875ca4bff9bad8d45767)]
 ```
 
-Scraping player profile needs a lot of work, until that is done you can try https://owapi.eu
+Scraping player profile is done via https://owapi.eu API. Calling `.getPlayerProfile("shalva#1234")` will return player
+statistics.
