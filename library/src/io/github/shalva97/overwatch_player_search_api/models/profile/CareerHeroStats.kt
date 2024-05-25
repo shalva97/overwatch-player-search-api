@@ -7,7 +7,7 @@ import kotlinx.serialization.json.JsonElement
 public data class CareerHeroStats(
     val assists: Assists? = null,
     val average: Average,
-    val best: Best,
+    val best: Best? = null,
     val combat: Combat,
     val heroSpecific: JsonElement?,
     val game: Game,
