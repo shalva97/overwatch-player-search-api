@@ -13,16 +13,8 @@ public data class PlayerProfileStats(
     val ratings: List<Rating>,
     val gamesWon: Int,
     val gamesLost: Int,
+    val gamesPlayed: Int,
     val private: Boolean,
-    // TODO add quickPlayStats and competitiveStats
-)
-
-@Serializable
-public data class Rating(
-    val group: String,
-    val tier: Int,
-    val role: String,
-    val roleIcon: String,
-    val rankIcon: String,
-    val tierIcon: String
+    val quickPlayStats: QuickPlayStats
+    // TODO add competitiveStats
 )
