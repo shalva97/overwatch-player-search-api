@@ -29,7 +29,10 @@ public class PlayerSearch {
 
     private val owTitles by lazy { Json.parseToJsonElement(titles) }
 
-    public suspend fun searchForPlayer(name: String): List<OverwatchPlayer> {
+    public suspend fun searchForPlayer(
+        name: String,
+        language: String = "en_US"
+    ): List<OverwatchPlayer> {
         return client
             .get("https://overwatch.blizzard.com/en-us/search/account-by-name/$name/")
             .body<List<OverwatchPlayerDTO>>()
@@ -37,7 +40,7 @@ public class PlayerSearch {
                 it.toDomain(
                     it.namecard?.let { it1 -> getNamecard(it1) },
                     it.portrait?.let { it1 -> getAvatar(it1) },
-                    it.title?.let { it1 -> getTitle(it1) })
+                    it.title?.let { it1 -> getTitle(it1, language) })
             }
     }
 
@@ -49,21 +52,21 @@ public class PlayerSearch {
             .body<PlayerProfileStats>()
     }
 
-    public fun getAvatar(id: String): String? {
+    private fun getAvatar(id: String): String? {
         return owAvatars.jsonObject[id]?.jsonObject?.get("icon")?.jsonPrimitive?.content
     }
 
-    public fun getTitle(id: String): String? {
+    private fun getTitle(id: String, language: String): String? {
         return owTitles.jsonObject[id]
             ?.jsonObject
             ?.get("name")
             ?.jsonObject
-            ?.get("en_US")
+            ?.get(language)
             ?.jsonPrimitive
             ?.content
     }
 
-    public fun getNamecard(id: String): String? {
+    private fun getNamecard(id: String): String? {
         return owNamecards.jsonObject[id]?.jsonObject?.get("icon")?.jsonPrimitive?.content
     }
 
