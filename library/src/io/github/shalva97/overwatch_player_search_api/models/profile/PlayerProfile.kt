@@ -9,7 +9,7 @@ public data class PlayerProfileStats(
     val endorsement: Int,
     val endorsementIcon: String,
     val title: String,
-    val ratings: List<Rating>,
+    val ratings: List<Rating>? = null,
     val gamesWon: Int,
     val gamesLost: Int,
     val gamesPlayed: Int,

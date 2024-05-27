@@ -44,11 +44,19 @@ public class PlayerSearch {
             }
     }
 
-    public suspend fun getPlayerProfile(playerTag: String): PlayerProfileStats {
+    public suspend fun getPlayerProfileForPC(playerTag: String): PlayerProfileStats {
         val tagForOwapi = playerTag.replace('#', '-')
 
         return client
             .get("https://owapi.eu/stats/pc/$tagForOwapi/complete")
+            .body<PlayerProfileStats>()
+    }
+
+    public suspend fun getPlayerProfileForConsole(playerTag: String): PlayerProfileStats {
+        val tagForOwapi = playerTag.replace('#', '-')
+
+        return client
+            .get("https://owapi.eu/stats/console/$tagForOwapi/complete")
             .body<PlayerProfileStats>()
     }
 

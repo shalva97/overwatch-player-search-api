@@ -20,7 +20,14 @@ class Examples {
     @Test
     fun getPlayerProfile(): Unit = runBlocking {
         val search = PlayerSearch()
-        val message = search.getPlayerProfile("shalva#21962")
+        val message = search.getPlayerProfileForPC("shalva#21962")
+        println(message)
+    }
+
+    @Test
+    fun getConsoleStats() = runBlocking {
+        val search = PlayerSearch()
+        val message = search.getPlayerProfileForConsole("bigman#31423")
         println(message)
     }
 }
