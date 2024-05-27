@@ -4,20 +4,14 @@ This library scrapes https://overwatch.blizzard.com/en-us/search/ and returns li
 
 # Installation
 
-Add and authenticate via Github Package Repository
+Add and [authenticate](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-gradle-registry#using-a-published-package) via Github Package Repository
 
 ```kotlin
 maven {
     url = uri("https://maven.pkg.github.com/shalva97/overwatch-player-search-api")
     credentials {
-        val properties = Properties().apply {
-            runCatching { load(FileInputStream("local.properties")) }
-                .onFailure {
-                    println("Failed to load properties. You need to authenticate with Github Packages to download all dependencies")
-                }
-        }
-        username = properties["gpr.user"] as String? ?: System.getenv("USERNAME")
-        password = properties["gpr.key"] as String? ?: System.getenv("TOKEN")
+        username = System.getenv("USERNAME")
+        password = System.getenv("TOKEN")
     }
 }
 ```
@@ -25,7 +19,7 @@ maven {
 Add dependency
 
 ```kotlin
-implementation("io.github.shalva97.overwatch_player_search_api:library:1.3")
+implementation("io.github.shalva97.overwatch_player_search_api:library:1.4")
 ```
 
 # Usage
