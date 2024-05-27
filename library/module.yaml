@@ -4,7 +4,9 @@ product:
     - macosX64
     - macosArm64
     - jvm
-#    - mingwX64
+    - linuxX64
+    - linuxArm64
+    - mingwX64
 
 dependencies:
   - io.ktor:ktor-client-content-negotiation:2.3.10
