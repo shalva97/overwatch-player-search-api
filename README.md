@@ -28,7 +28,7 @@ Create an instance of `PlayerSearch` and use `searchForPlayer("username")`. This
 data class, which will contain search results
 
 ```
-[OverwatchPlayer(battleTag=shalva#21966, isPublic=true, lastUpdated=1715113111, namecard=https://d15f34w2p8l1cc.cloudfront.net/overwatch/7226589f015117e841d23356bc45835409c38ba8fb0d1451ca9268961fffde0f.png, portrait=null, title=Haunted Shadow, url=e156ad86a570d6ffb8a921a2%7C44a3944e9291875ca4bff9bad8d45767)]
+[OverwatchPlayer(battleTag=username#1234, isPublic=true, lastUpdated=1715113111, namecard=https://d15f34w2p8l1cc.cloudfront.net/overwatch/7226589f015117e841d23356bc45835409c38ba8fb0d1451ca9268961fffde0f.png, portrait=null, title=Haunted Shadow, url=e156ad86a570d6ffb8a921a2%7C44a3944e9291875ca4bff9bad8d45767)]
 ```
 
 Scraping player profile is done via https://owapi.eu API. Calling `.getPlayerProfile("username#1234")` will return player
