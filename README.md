@@ -1,6 +1,6 @@
 # Overwatch player search API
 
-This library scrapes https://overwatch.blizzard.com/en-us/search/ and returns list of players
+This library scrapes https://overwatch.blizzard.com/en-us/search/ and returns list of players. Works on Android and Desktop.
 
 # Installation
 
