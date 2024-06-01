@@ -20,7 +20,7 @@ public class PlayerSearchTest {
     public fun getTitle() {
         val search = PlayerSearch()
 
-        assertEquals("Haunted Shadow", search.getTitle("0x0250000000006B2E"))
+        assertEquals("Haunted Shadow", search.getTitle("0x0250000000006B2E", "en_US"))
     }
 
     @Test

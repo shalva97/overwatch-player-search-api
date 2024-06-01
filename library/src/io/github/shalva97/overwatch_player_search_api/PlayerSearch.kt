@@ -60,11 +60,11 @@ public class PlayerSearch {
             .body<PlayerProfileStats>()
     }
 
-    private fun getAvatar(id: String): String? {
+    internal fun getAvatar(id: String): String? {
         return owAvatars.jsonObject[id]?.jsonObject?.get("icon")?.jsonPrimitive?.content
     }
 
-    private fun getTitle(id: String, language: String): String? {
+    internal fun getTitle(id: String, language: String): String? {
         return owTitles.jsonObject[id]
             ?.jsonObject
             ?.get("name")
@@ -74,7 +74,7 @@ public class PlayerSearch {
             ?.content
     }
 
-    private fun getNamecard(id: String): String? {
+    internal fun getNamecard(id: String): String? {
         return owNamecards.jsonObject[id]?.jsonObject?.get("icon")?.jsonPrimitive?.content
     }
 
