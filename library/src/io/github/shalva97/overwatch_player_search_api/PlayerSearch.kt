@@ -1,12 +1,12 @@
 package io.github.shalva97.overwatch_player_search_api
 
 import io.github.shalva97.overwatch_player_search_api.data.OWDataRepo
-import io.github.shalva97.overwatch_player_search_api.data.models.OverwatchPlayerDTO
+import io.github.shalva97.overwatch_player_search_api.data.models.search.OverwatchPlayerDTO
 import io.github.shalva97.overwatch_player_search_api.data.models.profile.PlayerProfileStatsDTO
 import io.github.shalva97.overwatch_player_search_api.data.parser.jsonParser
 import io.github.shalva97.overwatch_player_search_api.data.toDomain
 import io.github.shalva97.overwatch_player_search_api.data.toDomainModel
-import io.github.shalva97.overwatch_player_search_api.domain.models.OverwatchPlayer
+import io.github.shalva97.overwatch_player_search_api.domain.models.search.OverwatchPlayer
 import io.github.shalva97.overwatch_player_search_api.domain.models.profile.PlayerProfileStats
 import io.ktor.client.*
 import io.ktor.client.call.*

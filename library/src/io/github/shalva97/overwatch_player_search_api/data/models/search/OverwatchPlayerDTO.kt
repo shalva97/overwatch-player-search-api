@@ -1,6 +1,5 @@
-package io.github.shalva97.overwatch_player_search_api.data.models
+package io.github.shalva97.overwatch_player_search_api.data.models.search
 
-import io.github.shalva97.overwatch_player_search_api.domain.models.OverwatchPlayer
 import kotlinx.serialization.Serializable
 
 @Serializable

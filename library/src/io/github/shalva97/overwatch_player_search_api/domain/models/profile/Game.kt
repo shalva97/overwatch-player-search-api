@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 
 public data class Game(
     val gamesLost: Int,
-    val gamesPlayed: Int,
+    val gamesPlayed: Int? = null,
     val gamesWon: Int? = null,
     val heroWins: Int? = null,
     val timePlayed: String

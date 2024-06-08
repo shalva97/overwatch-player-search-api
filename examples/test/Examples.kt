@@ -35,23 +35,21 @@ class Examples {
     fun showHeroStatistics_getTopHero() = runBlocking {
         val search = PlayerSearch()
         val res = search.getPlayerProfileForPC("shalva#21962")
-        res.quickPlayStats.careerStats
+        res.quickPlayStats.topHeroes.take(3).println()
     }
 
     @Test
     fun showHeroStatistics_getCareerHeroStats() = runBlocking {
         val search = PlayerSearch()
         val res = search.getPlayerProfileForPC("shalva#21962")
-//        res.quickPlayStats.careerStats.getCareerHeroStats("ana").println()
+        res.quickPlayStats.careerStats.take(3).println()
     }
 
     @Test
     fun showHeroStatistics_getTopHeroes() = runBlocking {
         val search = PlayerSearch()
         val res = search.getPlayerProfileForPC("shalva#21962")
-        res.quickPlayStats.topHeroes.forEach {
-//            println(it.key + it.value) // TODO
-        }
+        res.competitiveStats.careerStats.take(3).println()
     }
 }
 

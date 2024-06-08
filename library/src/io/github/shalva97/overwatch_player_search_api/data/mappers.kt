@@ -1,22 +1,16 @@
 package io.github.shalva97.overwatch_player_search_api.data
 
-import io.github.shalva97.overwatch_player_search_api.data.models.OverwatchPlayerDTO
-import io.github.shalva97.overwatch_player_search_api.data.models.profile.CompetitiveStatsDTO
-import io.github.shalva97.overwatch_player_search_api.data.models.profile.PlayerProfileStatsDTO
-import io.github.shalva97.overwatch_player_search_api.data.models.profile.QuickPlayStatsDTO
-import io.github.shalva97.overwatch_player_search_api.data.models.profile.RatingDTO
-import io.github.shalva97.overwatch_player_search_api.domain.models.OverwatchPlayer
-import io.github.shalva97.overwatch_player_search_api.domain.models.profile.CompetitiveStats
-import io.github.shalva97.overwatch_player_search_api.domain.models.profile.PlayerProfileStats
-import io.github.shalva97.overwatch_player_search_api.domain.models.profile.QuickPlayStats
-import io.github.shalva97.overwatch_player_search_api.domain.models.profile.Rating
+import io.github.shalva97.overwatch_player_search_api.data.models.profile.*
+import io.github.shalva97.overwatch_player_search_api.data.models.search.OverwatchPlayerDTO
+import io.github.shalva97.overwatch_player_search_api.domain.models.profile.*
+import io.github.shalva97.overwatch_player_search_api.domain.models.search.OverwatchPlayer
 
 internal fun OverwatchPlayerDTO.toDomain(
     namecard: String?,
     portrait: String?,
     title: String?
 ): OverwatchPlayer {
-    return OverwatchPlayer(battleTag, isPublic, lastUpdated, namecard, portrait, title, url)
+    return OverwatchPlayer(battleTag, frame, isPublic, lastUpdated, namecard, portrait, title, url)
 }
 
 internal fun PlayerProfileStatsDTO.toDomainModel(): PlayerProfileStats {
@@ -50,9 +44,135 @@ private fun List<RatingDTO>?.toDomainModel(): List<Rating>? {
 }
 
 private fun CompetitiveStatsDTO.toDomainModel(): CompetitiveStats {
-    return CompetitiveStats(season, topHeroes, careerStats)
+    val heroes =
+        topHeroes.all
+            .filter { it.second != null }
+            .map {
+                TopHero(
+                    name = it.first,
+                    timePlayed = it.second!!.timePlayed,
+                    gamesWon = it.second!!.gamesWon,
+                    weaponAccuracy = it.second!!.weaponAccuracy,
+                    criticalHitAccuracy = it.second!!.criticalHitAccuracy,
+                    eliminationsPerLife = it.second!!.eliminationsPerLife,
+                    multiKillBest = it.second!!.multiKillBest,
+                    objectiveKills = it.second!!.objectiveKills
+                )
+            }
+    val stats =
+        careerStats.all
+            .filter { it.second != null }
+            .map {
+                CareerHeroStats(
+                    name = it.first,
+                    assists = it.second!!.assists?.toDomainModel(),
+                    average = it.second!!.average?.toDomainModel(),
+                    best = it.second!!.best?.toDomainModel(),
+                    combat = it.second!!.combat?.toDomainModel(),
+                    heroSpecific = it.second!!.heroSpecific,
+                    game = it.second!!.game.toDomainModel(),
+                    matchAwards = it.second!!.matchAwards
+                )
+            }
+    return CompetitiveStats(season, heroes, stats)
 }
 
 private fun QuickPlayStatsDTO.toDomainModel(): QuickPlayStats {
-    return QuickPlayStats(topHeroes, careerStats)
+    val heroes =
+        topHeroes.all
+            .filter { it.second != null }
+            .map {
+                TopHero(
+                    name = it.first,
+                    timePlayed = it.second!!.timePlayed,
+                    gamesWon = it.second!!.gamesWon,
+                    weaponAccuracy = it.second!!.weaponAccuracy,
+                    criticalHitAccuracy = it.second!!.criticalHitAccuracy,
+                    eliminationsPerLife = it.second!!.eliminationsPerLife,
+                    multiKillBest = it.second!!.multiKillBest,
+                    objectiveKills = it.second!!.objectiveKills
+                )
+            }
+    val stats =
+        careerStats.all
+            .filter { it.second != null }
+            .map {
+                CareerHeroStats(
+                    name = it.first,
+                    assists = it.second!!.assists?.toDomainModel(),
+                    average = it.second!!.average?.toDomainModel(),
+                    best = it.second!!.best?.toDomainModel(),
+                    combat = it.second!!.combat?.toDomainModel(),
+                    heroSpecific = it.second!!.heroSpecific,
+                    game = it.second!!.game.toDomainModel(),
+                    matchAwards = it.second!!.matchAwards
+                )
+            }
+    return QuickPlayStats(heroes, stats)
+}
+
+private fun CombatDTO.toDomainModel(): Combat {
+    return Combat(
+        damageDone = damageDone,
+        deaths = deaths,
+        eliminations = eliminations,
+        environmentalKills = environmentalKills,
+        finalBlows = finalBlows,
+        heroDamageDone = heroDamageDone,
+        meleeFinalBlows = meleeFinalBlows,
+        multikills = multikills,
+        objectiveContestTime = objectiveContestTime,
+        objectiveKills = objectiveKills,
+        objectiveTime = objectiveTime,
+        soloKills = soloKills,
+        timeSpentOnFire = timeSpentOnFire
+    )
+}
+
+private fun GameDTO.toDomainModel(): Game {
+    return Game(gamesLost, gamesPlayed, gamesWon, heroWins, timePlayed)
+}
+
+private fun BestDTO.toDomainModel(): Best {
+    return Best(
+        allDamageDoneMostInGame = allDamageDoneMostInGame,
+        assistsMostInGame = assistsMostInGame,
+        barrierDamageDoneMostInGame = barrierDamageDoneMostInGame,
+        defensiveAssistsMostInGame = defensiveAssistsMostInGame,
+        eliminationsMostInGame = eliminationsMostInGame,
+        environmentalKillsMostInGame = environmentalKillsMostInGame,
+        finalBlowsMostInGame = finalBlowsMostInGame,
+        healingDoneMostInGame = healingDoneMostInGame,
+        heroDamageDoneMostInGame = heroDamageDoneMostInGame,
+        killsStreakBest = killsStreakBest,
+        meleeFinalBlowsMostInGame = meleeFinalBlowsMostInGame,
+        multikillsBest = multikillsBest,
+        objectiveContestTimeMostInGame = objectiveContestTimeMostInGame,
+        objectiveKillsMostInGame = objectiveKillsMostInGame,
+        objectiveTimeMostInGame = objectiveTimeMostInGame,
+        offensiveAssistsMostInGame = offensiveAssistsMostInGame,
+        reconAssistsMostInGame = reconAssistsMostInGame,
+        soloKillsMostInGame = soloKillsMostInGame,
+        timeSpentOnFireMostInGame = timeSpentOnFireMostInGame
+    )
+}
+
+private fun AverageDTO.toDomainModel(): Average {
+    return Average(
+        assistsAvgPer10Min = assistsAvgPer10Min,
+        deathsAvgPer10Min = deathsAvgPer10Min,
+        eliminationsAvgPer10Min = eliminationsAvgPer10Min,
+        finalBlowsAvgPer10Min = finalBlowsAvgPer10Min,
+        healingDoneAvgPer10Min = healingDoneAvgPer10Min,
+        heroDamageDoneAvgPer10Min = heroDamageDoneAvgPer10Min,
+        objectiveContestTimeAvgPer10Min = objectiveContestTimeAvgPer10Min,
+        objectiveKillsAvgPer10Min = objectiveKillsAvgPer10Min,
+        objectiveTimeAvgPer10Min = objectiveTimeAvgPer10Min,
+        soloKillsAvgPer10Min = soloKillsAvgPer10Min,
+        timeSpentOnFireAvgPer10Min = timeSpentOnFireAvgPer10Min
+    )
+}
+
+private fun AssistsDTO.toDomainModel(): Assists {
+    return Assists(assists, defensiveAssists, healingDone, offensiveAssists, reconAssists)
 }

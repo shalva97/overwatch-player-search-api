@@ -4,8 +4,8 @@ import io.github.shalva97.overwatch_player_search_api.data.parser.timePlayedPars
 import kotlinx.serialization.Serializable
 import kotlin.time.Duration
 
-
 public data class TopHero(
+    val name: String,
     val timePlayed: String,
     val gamesWon: Int,
     val weaponAccuracy: Float,

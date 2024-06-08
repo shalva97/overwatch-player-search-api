@@ -6,6 +6,6 @@ import kotlinx.serialization.json.JsonObject
 
 public data class CompetitiveStats(
     val season: Int,
-    val topHeroes: JsonObject,
-    val careerStats: JsonObject
+    val topHeroes: List<TopHero>,
+    val careerStats: List<CareerHeroStats>
 )
