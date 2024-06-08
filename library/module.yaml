@@ -10,7 +10,8 @@ product:
 
 dependencies:
   - io.ktor:ktor-client-content-negotiation:2.3.10
-  - io.ktor:ktor-serialization-kotlinx-json:2.3.10
+  - io.ktor:ktor-serialization-kotlinx-json:2.3.10:
+      exported: true
   - io.ktor:ktor-client-core:2.3.10
   - com.mohamedrejeb.ksoup:ksoup-html:0.3.1
   - com.fleeksoft.ksoup:ksoup:0.1.2

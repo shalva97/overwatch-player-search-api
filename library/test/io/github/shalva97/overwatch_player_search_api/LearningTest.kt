@@ -5,9 +5,12 @@ import com.fleeksoft.ksoup.nodes.Document
 import io.github.shalva97.overwatch_player_search_api.models.profile.PlayerProfileStats
 import io.github.shalva97.overwatch_player_search_api.parser.timePlayedParserToDuration
 import io.github.shalva97.overwatch_player_search_api.sample_data.randomPlayerJSON
+import kotlinx.coroutines.internal.synchronized
+import kotlinx.coroutines.internal.synchronizedImpl
 import kotlinx.io.files.Path
 import kotlinx.io.files.SystemFileSystem
 import kotlinx.serialization.json.Json
+import kotlin.jvm.Synchronized
 import kotlin.test.Test
 
 public class LearningTest {
@@ -52,6 +55,5 @@ public class LearningTest {
 
         println(timePlayedParserToDuration(rawTime))
     }
-
 }
 

@@ -7,6 +7,7 @@ import io.github.shalva97.overwatch_player_search_api.models.toDomain
 import io.github.shalva97.overwatch_player_search_api.ow_data.avatars
 import io.github.shalva97.overwatch_player_search_api.ow_data.namecards
 import io.github.shalva97.overwatch_player_search_api.ow_data.titles
+import io.github.shalva97.overwatch_player_search_api.parser.jsonParser
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.plugins.contentnegotiation.*
@@ -17,10 +18,7 @@ import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 
 public class PlayerSearch {
-    private val jsonParser = Json {
-        ignoreUnknownKeys = true
-        isLenient = true
-    }
+
     private val client = HttpClient { install(ContentNegotiation) { json(jsonParser) } }
 
     private val owAvatars by lazy { Json.parseToJsonElement(avatars) }

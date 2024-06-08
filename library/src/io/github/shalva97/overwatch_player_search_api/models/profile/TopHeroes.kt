@@ -1,6 +1,7 @@
 package io.github.shalva97.overwatch_player_search_api.models.profile
 
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonObject
 
 @Serializable
 public data class TopHeroes(
@@ -40,44 +41,4 @@ public data class TopHeroes(
     val wreckingBall: TopHero? = null,
     val zarya: TopHero? = null,
     val zenyatta: TopHero? = null,
-) {
-    public val all: List<TopHero> by lazy {
-        listOfNotNull(
-            ashe,
-            baptiste,
-            bastion,
-            brigitte,
-            cassidy,
-            dVa,
-            doomfist,
-            echo,
-            genji,
-            hanzo,
-            illari,
-            junkerQueen,
-            junkrat,
-            kiriko,
-            lifeweaver,
-            lucio,
-            mauga,
-            mei,
-            mercy,
-            moira,
-            orisa,
-            ramattra,
-            reaper,
-            reinhardt,
-            roadhog,
-            sigma,
-            soldier76,
-            sombra,
-            torbjorn,
-            tracer,
-            widowmaker,
-            winston,
-            wreckingBall,
-            zarya,
-            zenyatta,
-        )
-    }
-}
+)
