@@ -1,7 +1,4 @@
 import io.github.shalva97.overwatch_player_search_api.PlayerSearch
-import io.github.shalva97.overwatch_player_search_api.mappers.getCareerHeroStats
-import io.github.shalva97.overwatch_player_search_api.mappers.getTopHero
-import io.github.shalva97.overwatch_player_search_api.models.profile.TopHero
 import kotlinx.coroutines.runBlocking
 import kotlin.test.Test
 
@@ -38,14 +35,14 @@ class Examples {
     fun showHeroStatistics_getTopHero() = runBlocking {
         val search = PlayerSearch()
         val res = search.getPlayerProfileForPC("shalva#21962")
-        res.quickPlayStats.topHeroes.getTopHero("ana").println()
+        res.quickPlayStats.careerStats
     }
 
     @Test
     fun showHeroStatistics_getCareerHeroStats() = runBlocking {
         val search = PlayerSearch()
         val res = search.getPlayerProfileForPC("shalva#21962")
-        res.quickPlayStats.careerStats.getCareerHeroStats("ana").println()
+//        res.quickPlayStats.careerStats.getCareerHeroStats("ana").println()
     }
 
     @Test

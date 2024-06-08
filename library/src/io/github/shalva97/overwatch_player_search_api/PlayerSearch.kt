@@ -1,31 +1,23 @@
 package io.github.shalva97.overwatch_player_search_api
 
-import io.github.shalva97.overwatch_player_search_api.models.OverwatchPlayer
-import io.github.shalva97.overwatch_player_search_api.models.OverwatchPlayerDTO
-import io.github.shalva97.overwatch_player_search_api.models.profile.PlayerProfileStats
-import io.github.shalva97.overwatch_player_search_api.models.toDomain
-import io.github.shalva97.overwatch_player_search_api.ow_data.avatars
-import io.github.shalva97.overwatch_player_search_api.ow_data.namecards
-import io.github.shalva97.overwatch_player_search_api.ow_data.titles
-import io.github.shalva97.overwatch_player_search_api.parser.jsonParser
+import io.github.shalva97.overwatch_player_search_api.data.OWDataRepo
+import io.github.shalva97.overwatch_player_search_api.data.models.OverwatchPlayerDTO
+import io.github.shalva97.overwatch_player_search_api.data.models.profile.PlayerProfileStatsDTO
+import io.github.shalva97.overwatch_player_search_api.data.parser.jsonParser
+import io.github.shalva97.overwatch_player_search_api.data.toDomain
+import io.github.shalva97.overwatch_player_search_api.data.toDomainModel
+import io.github.shalva97.overwatch_player_search_api.domain.models.OverwatchPlayer
+import io.github.shalva97.overwatch_player_search_api.domain.models.profile.PlayerProfileStats
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.request.*
 import io.ktor.serialization.kotlinx.json.*
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.jsonObject
-import kotlinx.serialization.json.jsonPrimitive
 
 public class PlayerSearch {
 
     private val client = HttpClient { install(ContentNegotiation) { json(jsonParser) } }
-
-    private val owAvatars by lazy { Json.parseToJsonElement(avatars) }
-
-    private val owNamecards by lazy { Json.parseToJsonElement(namecards) }
-
-    private val owTitles by lazy { Json.parseToJsonElement(titles) }
+    private val owRepo = OWDataRepo()
 
     public suspend fun searchForPlayer(
         name: String,
@@ -36,9 +28,9 @@ public class PlayerSearch {
             .body<List<OverwatchPlayerDTO>>()
             .map {
                 it.toDomain(
-                    it.namecard?.let { it1 -> getNamecard(it1) },
-                    it.portrait?.let { it1 -> getAvatar(it1) },
-                    it.title?.let { it1 -> getTitle(it1, language) })
+                    it.namecard?.let { it1 -> owRepo.getNamecard(it1) },
+                    it.portrait?.let { it1 -> owRepo.getAvatar(it1) },
+                    it.title?.let { it1 -> owRepo.getTitle(it1, language) })
             }
     }
 
@@ -47,7 +39,8 @@ public class PlayerSearch {
 
         return client
             .get("https://owapi.eu/stats/pc/$tagForOwapi/complete")
-            .body<PlayerProfileStats>()
+            .body<PlayerProfileStatsDTO>()
+            .toDomainModel()
     }
 
     public suspend fun getPlayerProfileForConsole(playerTag: String): PlayerProfileStats {
@@ -55,25 +48,8 @@ public class PlayerSearch {
 
         return client
             .get("https://owapi.eu/stats/console/$tagForOwapi/complete")
-            .body<PlayerProfileStats>()
-    }
-
-    internal fun getAvatar(id: String): String? {
-        return owAvatars.jsonObject[id]?.jsonObject?.get("icon")?.jsonPrimitive?.content
-    }
-
-    internal fun getTitle(id: String, language: String): String? {
-        return owTitles.jsonObject[id]
-            ?.jsonObject
-            ?.get("name")
-            ?.jsonObject
-            ?.get(language)
-            ?.jsonPrimitive
-            ?.content
-    }
-
-    internal fun getNamecard(id: String): String? {
-        return owNamecards.jsonObject[id]?.jsonObject?.get("icon")?.jsonPrimitive?.content
+            .body<PlayerProfileStatsDTO>()
+            .toDomainModel()
     }
 
     public fun close() {

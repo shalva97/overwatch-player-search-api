@@ -1,9 +1,9 @@
-package io.github.shalva97.overwatch_player_search_api.models.profile
+package io.github.shalva97.overwatch_player_search_api.domain.models.profile
 
+import io.github.shalva97.overwatch_player_search_api.domain.models.profile.TopHero
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.JsonObject
 
-@Serializable
+
 public data class TopHeroes(
     val ana: TopHero? = null,
     val ashe: TopHero? = null,

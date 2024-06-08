@@ -1,4 +1,4 @@
-package io.github.shalva97.overwatch_player_search_api.parser
+package io.github.shalva97.overwatch_player_search_api.data.parser
 
 import kotlinx.serialization.json.Json
 

@@ -1,8 +1,8 @@
-package io.github.shalva97.overwatch_player_search_api.models.profile
+package io.github.shalva97.overwatch_player_search_api.domain.models.profile
 
 import kotlinx.serialization.Serializable
 
-@Serializable
+
 public data class PlayerProfileStats(
     val icon: String,
     val name: String,

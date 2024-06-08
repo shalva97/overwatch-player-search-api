@@ -1,9 +1,9 @@
-package io.github.shalva97.overwatch_player_search_api.models.profile
+package io.github.shalva97.overwatch_player_search_api.data.models.profile
 
 import kotlinx.serialization.Serializable
 
 @Serializable
-public data class Combat(
+public data class CombatDTO(
     val damageDone: Int? = null,
     val deaths: Int? = null,
     val eliminations: Int? = null,

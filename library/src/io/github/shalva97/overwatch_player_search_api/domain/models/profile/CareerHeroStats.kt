@@ -1,9 +1,9 @@
-package io.github.shalva97.overwatch_player_search_api.models.profile
+package io.github.shalva97.overwatch_player_search_api.domain.models.profile
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonElement
 
-@Serializable
+
 public data class CareerHeroStats(
     val assists: Assists? = null,
     val average: Average? = null,

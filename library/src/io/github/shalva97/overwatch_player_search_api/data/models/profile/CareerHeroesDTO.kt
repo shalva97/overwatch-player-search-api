@@ -1,0 +1,45 @@
+package io.github.shalva97.overwatch_player_search_api.data.models.profile
+
+import io.github.shalva97.overwatch_player_search_api.domain.models.profile.CareerHeroStats
+import kotlinx.serialization.Serializable
+
+@Serializable
+public data class CareerHeroesDTO(
+    val allHeroes: CareerHeroStatsDTO? = null,
+    val ana: CareerHeroStatsDTO? = null,
+    val ashe: CareerHeroStatsDTO? = null,
+    val baptiste: CareerHeroStatsDTO? = null,
+    val bastion: CareerHeroStatsDTO? = null,
+    val brigitte: CareerHeroStatsDTO? = null,
+    val cassidy: CareerHeroStatsDTO? = null,
+    val dVa: CareerHeroStatsDTO? = null,
+    val doomfist: CareerHeroStatsDTO? = null,
+    val echo: CareerHeroStatsDTO? = null,
+    val genji: CareerHeroStatsDTO? = null,
+    val hanzo: CareerHeroStatsDTO? = null,
+    val illari: CareerHeroStatsDTO? = null,
+    val junkerQueen: CareerHeroStatsDTO? = null,
+    val junkrat: CareerHeroStatsDTO? = null,
+    val kiriko: CareerHeroStatsDTO? = null,
+    val lifeweaver: CareerHeroStatsDTO? = null,
+    val lucio: CareerHeroStatsDTO? = null,
+    val mauga: CareerHeroStatsDTO? = null,
+    val mei: CareerHeroStatsDTO? = null,
+    val mercy: CareerHeroStatsDTO? = null,
+    val moira: CareerHeroStatsDTO? = null,
+    val orisa: CareerHeroStatsDTO? = null,
+    val ramattra: CareerHeroStatsDTO? = null,
+    val reaper: CareerHeroStatsDTO? = null,
+    val reinhardt: CareerHeroStatsDTO? = null,
+    val roadhog: CareerHeroStatsDTO? = null,
+    val sigma: CareerHeroStatsDTO? = null,
+    val soldier76: CareerHeroStatsDTO? = null,
+    val sombra: CareerHeroStatsDTO? = null,
+    val torbjorn: CareerHeroStatsDTO? = null,
+    val tracer: CareerHeroStatsDTO? = null,
+    val widowmaker: CareerHeroStatsDTO? = null,
+    val winston: CareerHeroStatsDTO? = null,
+    val wreckingBall: CareerHeroStatsDTO? = null,
+    val zarya: CareerHeroStatsDTO? = null,
+    val zenyatta: CareerHeroStatsDTO? = null,
+)
