@@ -45,33 +45,31 @@ private fun List<RatingDTO>?.toDomainModel(): List<Rating>? {
 
 private fun CompetitiveStatsDTO.toDomainModel(): CompetitiveStats {
     val heroes =
-        topHeroes.all
-            .filter { it.second != null }
-            .map {
+        topHeroes.entries
+            .map { (name, topHero) ->
                 TopHero(
-                    name = it.first,
-                    timePlayed = it.second!!.timePlayed,
-                    gamesWon = it.second!!.gamesWon,
-                    weaponAccuracy = it.second!!.weaponAccuracy,
-                    criticalHitAccuracy = it.second!!.criticalHitAccuracy,
-                    eliminationsPerLife = it.second!!.eliminationsPerLife,
-                    multiKillBest = it.second!!.multiKillBest,
-                    objectiveKills = it.second!!.objectiveKills
+                    name = name,
+                    timePlayed = topHero.timePlayed,
+                    gamesWon = topHero.gamesWon,
+                    weaponAccuracy = topHero.weaponAccuracy,
+                    criticalHitAccuracy = topHero.criticalHitAccuracy,
+                    eliminationsPerLife = topHero.eliminationsPerLife,
+                    multiKillBest = topHero.multiKillBest,
+                    objectiveKills = topHero.objectiveKills
                 )
             }
     val stats =
-        careerStats.all
-            .filter { it.second != null }
-            .map {
+        careerStats.entries
+            .map { (heroName, careerHero) ->
                 CareerHeroStats(
-                    name = it.first,
-                    assists = it.second!!.assists?.toDomainModel(),
-                    average = it.second!!.average?.toDomainModel(),
-                    best = it.second!!.best?.toDomainModel(),
-                    combat = it.second!!.combat?.toDomainModel(),
-                    heroSpecific = it.second!!.heroSpecific,
-                    game = it.second!!.game.toDomainModel(),
-                    matchAwards = it.second!!.matchAwards
+                    name = heroName,
+                    assists = careerHero.assists?.toDomainModel(),
+                    average = careerHero.average?.toDomainModel(),
+                    best = careerHero.best?.toDomainModel(),
+                    combat = careerHero.combat?.toDomainModel(),
+                    heroSpecific = careerHero.heroSpecific,
+                    game = careerHero.game.toDomainModel(),
+                    matchAwards = careerHero.matchAwards
                 )
             }
     return CompetitiveStats(season, heroes, stats)
@@ -79,33 +77,31 @@ private fun CompetitiveStatsDTO.toDomainModel(): CompetitiveStats {
 
 private fun QuickPlayStatsDTO.toDomainModel(): QuickPlayStats {
     val heroes =
-        topHeroes.all
-            .filter { it.second != null }
-            .map {
+        topHeroes.entries
+            .map { (name, topHero) ->
                 TopHero(
-                    name = it.first,
-                    timePlayed = it.second!!.timePlayed,
-                    gamesWon = it.second!!.gamesWon,
-                    weaponAccuracy = it.second!!.weaponAccuracy,
-                    criticalHitAccuracy = it.second!!.criticalHitAccuracy,
-                    eliminationsPerLife = it.second!!.eliminationsPerLife,
-                    multiKillBest = it.second!!.multiKillBest,
-                    objectiveKills = it.second!!.objectiveKills
+                    name = name,
+                    timePlayed = topHero.timePlayed,
+                    gamesWon = topHero.gamesWon,
+                    weaponAccuracy = topHero.weaponAccuracy,
+                    criticalHitAccuracy = topHero.criticalHitAccuracy,
+                    eliminationsPerLife = topHero.eliminationsPerLife,
+                    multiKillBest = topHero.multiKillBest,
+                    objectiveKills = topHero.objectiveKills
                 )
             }
     val stats =
-        careerStats.all
-            .filter { it.second != null }
-            .map {
+        careerStats.entries
+            .map { (heroName, careerHero) ->
                 CareerHeroStats(
-                    name = it.first,
-                    assists = it.second!!.assists?.toDomainModel(),
-                    average = it.second!!.average?.toDomainModel(),
-                    best = it.second!!.best?.toDomainModel(),
-                    combat = it.second!!.combat?.toDomainModel(),
-                    heroSpecific = it.second!!.heroSpecific,
-                    game = it.second!!.game.toDomainModel(),
-                    matchAwards = it.second!!.matchAwards
+                    name = heroName,
+                    assists = careerHero.assists?.toDomainModel(),
+                    average = careerHero.average?.toDomainModel(),
+                    best = careerHero.best?.toDomainModel(),
+                    combat = careerHero.combat?.toDomainModel(),
+                    heroSpecific = careerHero.heroSpecific,
+                    game = careerHero.game.toDomainModel(),
+                    matchAwards = careerHero.matchAwards
                 )
             }
     return QuickPlayStats(heroes, stats)

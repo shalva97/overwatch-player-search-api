@@ -4,4 +4,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
 
 @Serializable
-public data class QuickPlayStatsDTO(val topHeroes: TopHeroesDTO, val careerStats: CareerHeroesDTO)
+public data class QuickPlayStatsDTO(
+    val topHeroes: Map<String, TopHeroDTO>,
+    val careerStats: Map<String, CareerHeroStatsDTO>
+)

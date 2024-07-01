@@ -5,6 +5,6 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class CompetitiveStatsDTO(
     val season: Int,
-    val topHeroes: TopHeroesDTO,
-    val careerStats: CareerHeroesDTO
+    val topHeroes: Map<String, TopHeroDTO>,
+    val careerStats: Map<String, CareerHeroStatsDTO>
 )
