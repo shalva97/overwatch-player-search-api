@@ -19,7 +19,7 @@ maven {
 Add dependency
 
 ```kotlin
-implementation("io.github.shalva97.overwatch_player_search_api:library:1.5")
+implementation("io.github.shalva97.overwatch_player_search_api:library:1.7")
 ```
 
 # Usage
