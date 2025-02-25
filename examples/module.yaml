@@ -1,8 +1,4 @@
-product:
-  type: app
-  platforms:
-    - macosX64
-    - jvm
+product: jvm/app
 
 dependencies:
   - ../library
@@ -12,6 +8,4 @@ dependencies:
 
 settings:
   kotlin:
-    languageVersion: 1.9
-  jvm:
-    target: 17
+    languageVersion: 2.0
