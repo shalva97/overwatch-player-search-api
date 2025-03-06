@@ -17,9 +17,9 @@ jobs:
           distribution: 'adopt'
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@v3
+      - name: 'Setup Gradle'
+        uses: gradle/actions/setup-gradle@v4
       - name: Publish package
-        uses: gradle/gradle-build-action@v3
-        with:
-          arguments: publishAllPublicationsToGitHubPackagesRepository
+        run: ./gradlew publishAllPublicationsToGitHubPackagesRepository
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
