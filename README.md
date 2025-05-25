@@ -47,8 +47,10 @@ let dispatchGroup = DispatchGroup()
 
 dispatchGroup.enter() // Indicate that an asynchronous task has started
 
-service.searchForPlayer(name: "shalva", language: "en_US") { player, error -> () in
-    print(player)
+service.searchForPlayer(name: "bigman", language: "en_US") { players, error -> () in
+    for player in players! {
+        print("name: \(player.battleTag) - title: \(player.title)")
+    }
     dispatchGroup.leave() // Indicate that the asynchronous task has completed
 }
 
