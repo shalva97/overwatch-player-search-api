@@ -14,7 +14,7 @@ publishing {
 }
 
 kotlin {
-    val xcframeworkName = "Shared"
+    val xcframeworkName = "OverwatchPlayerSearchApi"
     val xcf = XCFramework(xcframeworkName)
 
     listOf(
@@ -26,7 +26,7 @@ kotlin {
             baseName = xcframeworkName
 
             // Specify CFBundleIdentifier to uniquely identify the framework
-            binaryOption("bundleId", "org.example.${xcframeworkName}")
+            binaryOption("bundleId", "com.github.shalva97.${xcframeworkName}")
             xcf.add(this)
             isStatic = true
         }
