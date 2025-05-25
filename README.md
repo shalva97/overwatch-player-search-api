@@ -33,3 +33,29 @@ data class, which will contain search results
 
 Scraping player profile is done via https://owapi.eu API. Calling `.getPlayerProfile("username#1234")` will return player
 statistics.
+
+# Usage in Swift
+
+This project supports SPM so just as with other packages this can be added via File -> Add package dependencies...
+
+```swift
+import Foundation
+import OverwatchPlayerSearchApi
+
+let service = PlayerSearch()
+let dispatchGroup = DispatchGroup()
+
+dispatchGroup.enter() // Indicate that an asynchronous task has started
+
+service.searchForPlayer(name: "shalva", language: "en_US") { player, error -> () in
+    print(player)
+    dispatchGroup.leave() // Indicate that the asynchronous task has completed
+}
+
+// This will block the current thread until all tasks in the dispatchGroup have called `leave()`
+// Use this with caution, especially on the main thread, as it can lead to UI freezes.
+dispatchGroup.wait()
+print("searchForPlayer has completed (using DispatchGroup.wait())")
+
+
+```
