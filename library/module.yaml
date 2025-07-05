@@ -7,6 +7,9 @@ product:
     - linuxX64
     - linuxArm64
     - mingwX64
+    - iosArm64
+    - iosSimulatorArm64
+    - iosX64
 
 dependencies:
   - io.ktor:ktor-client-content-negotiation:3.1.0
@@ -29,11 +32,11 @@ settings:
   kotlin:
     freeCompilerArgs:
       - "-Xexplicit-api=strict"
-    languageVersion: 2.0
+    languageVersion: 2.2
     serialization:
       json
   jvm:
     release: 17
   publishing:
-    version: "1.9"
+    version: "1.10"
     group: "io.github.shalva97.overwatch_player_search_api"
