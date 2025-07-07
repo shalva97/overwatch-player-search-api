@@ -1,30 +1,32 @@
 package io.github.shalva97.overwatch_player_search_api
 
-import io.ktor.client.*
-import io.ktor.client.request.*
-import io.ktor.client.statement.*
-import io.ktor.util.*
-import kotlin.test.Test
-import kotlin.test.assertEquals
+import io.github.shalva97.overwatch_player_search_api.data.OWDataRepo
+import io.ktor.client.HttpClient
+import io.ktor.client.request.get
+import io.ktor.client.statement.bodyAsText
 import kotlinx.coroutines.runBlocking
-import kotlinx.io.*
+import kotlinx.io.buffered
 import kotlinx.io.bytestring.encodeToByteString
 import kotlinx.io.files.Path
 import kotlinx.io.files.SystemFileSystem
+import kotlinx.io.readString
+import kotlinx.io.write
 import kotlin.test.Ignore
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 public class PlayerSearchTest {
 
     @Test
     public fun getTitle() {
-        val search = PlayerSearch()
+        val search = OWDataRepo()
 
         assertEquals("Haunted Shadow", search.getTitle("0x0250000000006B2E", "en_US"))
     }
 
     @Test
     public fun getNamecard() {
-        val search = PlayerSearch()
+        val search = OWDataRepo()
 
         assertEquals(
             "https://d15f34w2p8l1cc.cloudfront.net/overwatch/7226589f015117e841d23356bc45835409c38ba8fb0d1451ca9268961fffde0f.png",
@@ -34,7 +36,7 @@ public class PlayerSearchTest {
 
     @Test
     public fun getIcon() {
-        val search = PlayerSearch()
+        val search = OWDataRepo()
 
         assertEquals(
             "https://d15f34w2p8l1cc.cloudfront.net/overwatch/d3e03d1b5b0b85f3cf98847cfd0a396a311a370363c46245e254ce2e3a040527.png",
@@ -61,7 +63,6 @@ public class PlayerSearchTest {
         assertEquals(owData, currentOWData)
     }
 
-    @OptIn(InternalAPI::class, ExperimentalStdlibApi::class)
     @Test
     @Ignore // only run this manually
     public fun updateLocalOWData(): Unit = runBlocking {
