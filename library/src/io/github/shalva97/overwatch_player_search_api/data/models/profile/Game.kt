@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 public data class GameDTO(
-    val gamesLost: Int,
+    val gamesLost: Int? = null,
     val gamesPlayed: Int? = null,
     val gamesWon: Int? = null,
     val heroWins: Int? = null,
