@@ -4,7 +4,7 @@ This library scrapes https://overwatch.blizzard.com/en-us/search/ and returns li
 
 # Installation
 
-Add and [authenticate](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-gradle-registry#using-a-published-package) via Github Package Repository
+Add and [authenticate](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-gradle-registry#using-a-published-package) via Github Package Repository. Add at least [read:packages](https://github.com/settings/tokens/new#:~:text=GitHub%20Package%20Registry-,read%3Apackages,-Download%20packages%20from) scope
 
 ```kotlin
 maven {
