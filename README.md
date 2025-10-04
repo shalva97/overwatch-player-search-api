@@ -10,7 +10,7 @@ Add and [authenticate](https://docs.github.com/en/packages/working-with-a-github
 maven {
     url = uri("https://maven.pkg.github.com/shalva97/overwatch-player-search-api")
     credentials {
-        username = System.getenv("USERNAME")
+        username = System.getenv("YOUR_USERNAME")
         password = System.getenv("TOKEN")
     }
 }
