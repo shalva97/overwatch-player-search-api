@@ -6,7 +6,7 @@ class Examples {
     @Test
     fun searchPlayer() = runBlocking {
         val search = PlayerSearch()
-        val res = search.searchForPlayer("shalva")
+        val res = search.searchForPlayer("khinkali")
         println(res)
     }
 

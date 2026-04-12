@@ -4,12 +4,11 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 internal data class OverwatchPlayerDTO(
-    val battleTag: String,
-    val frame: String?,
     val isPublic: Boolean,
     val lastUpdated: Long,
     val namecard: String? = null,
     val portrait: String? = null,
-    val title: String? = null,
-    val url: String
+    val title: Map<String, String> = emptyMap(),
+    val name: String,
+    val url: String,
 )

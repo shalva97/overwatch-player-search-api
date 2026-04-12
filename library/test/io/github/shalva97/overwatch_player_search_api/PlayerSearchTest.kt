@@ -1,6 +1,5 @@
 package io.github.shalva97.overwatch_player_search_api
 
-import io.github.shalva97.overwatch_player_search_api.data.OWDataRepo
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import io.ktor.client.statement.bodyAsText

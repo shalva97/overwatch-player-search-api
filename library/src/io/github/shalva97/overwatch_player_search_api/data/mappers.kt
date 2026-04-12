@@ -10,7 +10,7 @@ internal fun OverwatchPlayerDTO.toDomain(
     portrait: String?,
     title: String?
 ): OverwatchPlayer {
-    return OverwatchPlayer(battleTag, frame, isPublic, lastUpdated, namecard, portrait, title, url)
+    return OverwatchPlayer(isPublic, lastUpdated, namecard, portrait, title, url)
 }
 
 internal fun PlayerProfileStatsDTO.toDomainModel(): PlayerProfileStats {

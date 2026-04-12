@@ -37,5 +37,5 @@ settings:
   jvm:
     release: 17
   publishing:
-    version: "2.0"
+    version: "2.1"
     group: "io.github.shalva97.overwatch_player_search_api"

@@ -1,6 +1,5 @@
 package io.github.shalva97.overwatch_player_search_api
 
-import io.github.shalva97.overwatch_player_search_api.data.OWDataRepo
 import io.github.shalva97.overwatch_player_search_api.data.models.search.OverwatchPlayerDTO
 import io.github.shalva97.overwatch_player_search_api.data.models.profile.PlayerProfileStatsDTO
 import io.github.shalva97.overwatch_player_search_api.data.parser.jsonParser
@@ -17,7 +16,6 @@ import io.ktor.serialization.kotlinx.json.*
 public class PlayerSearch {
 
     private val client = HttpClient { install(ContentNegotiation) { json(jsonParser) } }
-    private val owRepo = OWDataRepo()
 
     public suspend fun searchForPlayer(
         name: String,
@@ -28,9 +26,10 @@ public class PlayerSearch {
             .body<List<OverwatchPlayerDTO>>()
             .map {
                 it.toDomain(
-                    it.namecard?.let { it1 -> owRepo.getNamecard(it1) },
-                    it.portrait?.let { it1 -> owRepo.getAvatar(it1) },
-                    it.title?.let { it1 -> owRepo.getTitle(it1, language) })
+                    namecard = it.namecard,
+                    portrait = it.portrait,
+                    title = it.title[language]
+                )
             }
     }
 
