@@ -1,8 +1,9 @@
-package io.github.shalva97.overwatch_player_search_api.domain.models.profile
+package io.github.shalva97.overwatch_player_search_api.data.models.compelte_profile
 
 import kotlinx.serialization.Serializable
 
-public data class Average(
+@Serializable
+public data class AverageDTO(
     val assistsAvgPer10Min: Float? = null,
     val deathsAvgPer10Min: Float? = null,
     val eliminationsAvgPer10Min: Float? = null,

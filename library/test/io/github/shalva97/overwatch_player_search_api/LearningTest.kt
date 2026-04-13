@@ -2,7 +2,7 @@ package io.github.shalva97.overwatch_player_search_api
 
 import com.fleeksoft.ksoup.Ksoup
 import com.fleeksoft.ksoup.nodes.Document
-import io.github.shalva97.overwatch_player_search_api.domain.models.profile.PlayerProfileStats
+import io.github.shalva97.overwatch_player_search_api.domain.models.complete_profile.CompletePlayerProfileStats
 import io.github.shalva97.overwatch_player_search_api.data.parser.timePlayedParserToDuration
 import io.github.shalva97.overwatch_player_search_api.sample_data.randomPlayerJSON
 import kotlinx.io.files.Path
@@ -34,7 +34,7 @@ public class LearningTest {
 
     @Test
     public fun exampleStats() {
-        println(jsonParser.decodeFromString<PlayerProfileStats>(randomPlayerJSON))
+        println(jsonParser.decodeFromString<CompletePlayerProfileStats>(randomPlayerJSON))
     }
 
     @OptIn(ExperimentalStdlibApi::class)

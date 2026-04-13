@@ -1,11 +1,13 @@
 package io.github.shalva97.overwatch_player_search_api
 
 import io.github.shalva97.overwatch_player_search_api.data.models.search.OverwatchPlayerDTO
+import io.github.shalva97.overwatch_player_search_api.data.models.compelte_profile.CompletePlayerProfileStatsDTO
 import io.github.shalva97.overwatch_player_search_api.data.models.profile.PlayerProfileStatsDTO
 import io.github.shalva97.overwatch_player_search_api.data.parser.jsonParser
 import io.github.shalva97.overwatch_player_search_api.data.toDomain
 import io.github.shalva97.overwatch_player_search_api.data.toDomainModel
 import io.github.shalva97.overwatch_player_search_api.domain.models.search.OverwatchPlayer
+import io.github.shalva97.overwatch_player_search_api.domain.models.complete_profile.CompletePlayerProfileStats
 import io.github.shalva97.overwatch_player_search_api.domain.models.profile.PlayerProfileStats
 import io.ktor.client.*
 import io.ktor.client.call.*
@@ -33,12 +35,30 @@ public class PlayerSearch {
             }
     }
 
-    public suspend fun getPlayerProfileForPC(playerTag: String): PlayerProfileStats {
+    public suspend fun getCompletePlayerProfileForPC(playerTag: String): CompletePlayerProfileStats {
         val tagForOwapi = playerTag.replace('#', '-')
 
         return client
             .get("https://owapi.eu/stats/pc/$tagForOwapi/complete")
+            .body<CompletePlayerProfileStatsDTO>()
+            .toDomainModel()
+    }
+
+    public suspend fun getPlayerProfileForPC(playerTag: String): PlayerProfileStats {
+        val tagForOwapi = playerTag.replace('#', '-')
+
+        return client
+            .get("https://owapi.eu/stats/pc/$tagForOwapi/profile")
             .body<PlayerProfileStatsDTO>()
+            .toDomainModel()
+    }
+
+    public suspend fun getCompletePlayerProfileForConsole(playerTag: String): CompletePlayerProfileStats {
+        val tagForOwapi = playerTag.replace('#', '-')
+
+        return client
+            .get("https://owapi.eu/stats/console/$tagForOwapi/complete")
+            .body<CompletePlayerProfileStatsDTO>()
             .toDomainModel()
     }
 
@@ -46,7 +66,7 @@ public class PlayerSearch {
         val tagForOwapi = playerTag.replace('#', '-')
 
         return client
-            .get("https://owapi.eu/stats/console/$tagForOwapi/complete")
+            .get("https://owapi.eu/stats/console/$tagForOwapi/profile")
             .body<PlayerProfileStatsDTO>()
             .toDomainModel()
     }

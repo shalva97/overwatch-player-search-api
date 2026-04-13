@@ -1,8 +1,12 @@
 package io.github.shalva97.overwatch_player_search_api.data
 
-import io.github.shalva97.overwatch_player_search_api.data.models.profile.*
+import io.github.shalva97.overwatch_player_search_api.domain.models.profile.PlayerProfileStats
+import io.github.shalva97.overwatch_player_search_api.data.models.compelte_profile.*
+import io.github.shalva97.overwatch_player_search_api.data.models.profile.CompetitiveStatsDTO
+import io.github.shalva97.overwatch_player_search_api.data.models.profile.PlayerProfileStatsDTO
+import io.github.shalva97.overwatch_player_search_api.data.models.profile.QuickPlayStatsDTO
 import io.github.shalva97.overwatch_player_search_api.data.models.search.OverwatchPlayerDTO
-import io.github.shalva97.overwatch_player_search_api.domain.models.profile.*
+import io.github.shalva97.overwatch_player_search_api.domain.models.complete_profile.*
 import io.github.shalva97.overwatch_player_search_api.domain.models.search.OverwatchPlayer
 
 internal fun OverwatchPlayerDTO.toDomain(
@@ -13,8 +17,8 @@ internal fun OverwatchPlayerDTO.toDomain(
     return OverwatchPlayer(isPublic, lastUpdated, namecard, portrait, title, url)
 }
 
-internal fun PlayerProfileStatsDTO.toDomainModel(): PlayerProfileStats {
-    return PlayerProfileStats(
+internal fun CompletePlayerProfileStatsDTO.toDomainModel(): CompletePlayerProfileStats {
+    return CompletePlayerProfileStats(
         icon = icon,
         name = name,
         endorsement = endorsement,
@@ -25,8 +29,49 @@ internal fun PlayerProfileStatsDTO.toDomainModel(): PlayerProfileStats {
         gamesLost = gamesLost,
         gamesPlayed = gamesPlayed,
         private = private,
+        completeQuickPlayStats = quickPlayStats.toDomainModel(),
+        completeCompetitiveStats = competitiveStats.toDomainModel()
+    )
+}
+
+internal fun PlayerProfileStatsDTO.toDomainModel(): PlayerProfileStats {
+    return PlayerProfileStats(
+        icon = icon,
+        name = name,
+        endorsement = endorsement,
+        endorsementIcon = endorsementIcon,
+        ratings = ratings.toDomainModel(),
+        private = private,
         quickPlayStats = quickPlayStats.toDomainModel(),
         competitiveStats = competitiveStats.toDomainModel()
+    )
+}
+
+private fun QuickPlayStatsDTO.toDomainModel(): QuickPlayStats {
+    return QuickPlayStats(
+        gamesPlayed = gamesPlayed,
+        gamesWon = gamesWon,
+        gamesLost = gamesLost,
+        timePlayed = timePlayed,
+        mostPlayedHero = mostPlayedHero,
+        mostPlayedHeroTimePlayed = mostPlayedHeroTimePlayed,
+        mostPlayedHeroGamesPlayed = mostPlayedHeroGamesPlayed,
+        mostPlayedHeroWinPercentage = mostPlayedHeroWinPercentage
+    )
+}
+
+private fun CompetitiveStatsDTO.toDomainModel(): CompetitiveStats {
+    return CompetitiveStats(
+        season = season,
+        realSeason = realSeason,
+        gamesPlayed = gamesPlayed,
+        gamesWon = gamesWon,
+        gamesLost = gamesLost,
+        timePlayed = timePlayed,
+        mostPlayedHero = mostPlayedHero,
+        mostPlayedHeroTimePlayed = mostPlayedHeroTimePlayed,
+        mostPlayedHeroGamesPlayed = mostPlayedHeroGamesPlayed,
+        mostPlayedHeroWinPercentage = mostPlayedHeroWinPercentage
     )
 }
 
@@ -43,7 +88,7 @@ private fun List<RatingDTO>?.toDomainModel(): List<Rating>? {
     }
 }
 
-private fun CompetitiveStatsDTO.toDomainModel(): CompetitiveStats {
+private fun CompleteCompetitiveStatsDTO.toDomainModel(): CompleteCompetitiveStats {
     val heroes =
         topHeroes.entries
             .map { (name, topHero) ->
@@ -72,10 +117,10 @@ private fun CompetitiveStatsDTO.toDomainModel(): CompetitiveStats {
                     matchAwards = careerHero.matchAwards
                 )
             }
-    return CompetitiveStats(season, heroes, stats)
+    return CompleteCompetitiveStats(season, heroes, stats)
 }
 
-private fun QuickPlayStatsDTO.toDomainModel(): QuickPlayStats {
+private fun CompleteQuickPlayStatsDTO.toDomainModel(): CompleteQuickPlayStats {
     val heroes =
         topHeroes.entries
             .map { (name, topHero) ->
@@ -104,7 +149,7 @@ private fun QuickPlayStatsDTO.toDomainModel(): QuickPlayStats {
                     matchAwards = careerHero.matchAwards
                 )
             }
-    return QuickPlayStats(heroes, stats)
+    return CompleteQuickPlayStats(heroes, stats)
 }
 
 private fun CombatDTO.toDomainModel(): Combat {

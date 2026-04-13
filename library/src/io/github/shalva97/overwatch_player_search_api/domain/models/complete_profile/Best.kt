@@ -1,6 +1,4 @@
-package io.github.shalva97.overwatch_player_search_api.domain.models.profile
-
-import kotlinx.serialization.Serializable
+package io.github.shalva97.overwatch_player_search_api.domain.models.complete_profile
 
 public data class Best(
     val allDamageDoneMostInGame: Int? = null,

@@ -1,6 +1,6 @@
-package io.github.shalva97.overwatch_player_search_api.domain.models.profile
+package io.github.shalva97.overwatch_player_search_api.domain.models.complete_profile
 
-public data class PlayerProfileStats(
+public data class CompletePlayerProfileStats(
     val icon: String,
     val name: String,
     val endorsement: Int,
@@ -11,6 +11,6 @@ public data class PlayerProfileStats(
     val gamesLost: Int,
     val gamesPlayed: Int,
     val private: Boolean,
-    val quickPlayStats: QuickPlayStats,
-    val competitiveStats: CompetitiveStats
+    val completeQuickPlayStats: CompleteQuickPlayStats,
+    val completeCompetitiveStats: CompleteCompetitiveStats
 )

@@ -1,4 +1,4 @@
-package io.github.shalva97.overwatch_player_search_api.domain.models.profile
+package io.github.shalva97.overwatch_player_search_api.domain.models.complete_profile
 
 public data class Game(
     val gamesLost: Int? = null,

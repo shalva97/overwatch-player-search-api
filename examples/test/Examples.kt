@@ -18,38 +18,45 @@ class Examples {
     }
 
     @Test
-    fun getPlayerProfile(): Unit = runBlocking {
+    fun getCompletePlayerProfile(): Unit = runBlocking {
         val search = PlayerSearch()
-        val res = search.getPlayerProfileForPC("Senna#11894")
+        val res = search.getCompletePlayerProfileForPC("Senna#11894")
         println(res)
     }
 
     @Test
     fun getConsoleStats() = runBlocking {
         val search = PlayerSearch()
-        val res = search.getPlayerProfileForConsole("bigman#31423")
+        val res = search.getCompletePlayerProfileForConsole("bigman#31423")
         println(res)
     }
 
     @Test
     fun showHeroStatistics_getTopHero() = runBlocking {
         val search = PlayerSearch()
-        val res = search.getPlayerProfileForPC("shalva#21962")
-        res.quickPlayStats.topHeroes.take(3).println()
+        val res = search.getCompletePlayerProfileForPC("shalva#21962")
+        res.completeQuickPlayStats.topHeroes.take(3).println()
     }
 
     @Test
     fun showHeroStatistics_getCareerHeroStats() = runBlocking {
         val search = PlayerSearch()
-        val res = search.getPlayerProfileForPC("shalva#21962")
-        res.quickPlayStats.careerStats.take(3).println()
+        val res = search.getCompletePlayerProfileForPC("shalva#21962")
+        res.completeQuickPlayStats.careerStats.take(3).println()
     }
 
     @Test
     fun showHeroStatistics_getTopHeroes() = runBlocking {
         val search = PlayerSearch()
-        val res = search.getPlayerProfileForPC("shalva#21962")
-        res.competitiveStats.careerStats.take(3).println()
+        val res = search.getCompletePlayerProfileForPC("shalva#21962")
+        res.completeCompetitiveStats.careerStats.take(3).println()
+    }
+
+    @Test
+    fun getPlayerProfile(): Unit = runBlocking {
+        val search = PlayerSearch()
+        val res = search.getPlayerProfileForPC("Senna#11894")
+        println(res)
     }
 }
 

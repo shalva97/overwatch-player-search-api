@@ -1,11 +1,11 @@
-package io.github.shalva97.overwatch_player_search_api.domain.models.profile
+package io.github.shalva97.overwatch_player_search_api.data.models.compelte_profile
 
 import io.github.shalva97.overwatch_player_search_api.data.parser.timePlayedParserToDuration
 import kotlinx.serialization.Serializable
 import kotlin.time.Duration
 
-public data class TopHero(
-    val name: String,
+@Serializable
+public data class TopHeroDTO(
     val timePlayed: String,
     val gamesWon: Int,
     val weaponAccuracy: Float,

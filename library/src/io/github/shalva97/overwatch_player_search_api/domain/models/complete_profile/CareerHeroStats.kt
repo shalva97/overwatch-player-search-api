@@ -1,6 +1,5 @@
-package io.github.shalva97.overwatch_player_search_api.domain.models.profile
+package io.github.shalva97.overwatch_player_search_api.domain.models.complete_profile
 
-import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonElement
 
 public data class CareerHeroStats(

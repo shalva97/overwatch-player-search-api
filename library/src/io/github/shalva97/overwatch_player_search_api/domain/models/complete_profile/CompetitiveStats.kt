@@ -1,9 +1,8 @@
-package io.github.shalva97.overwatch_player_search_api.data.models.profile
+package io.github.shalva97.overwatch_player_search_api.domain.models.complete_profile
 
-import kotlinx.serialization.Serializable
-
-@Serializable
-internal data class QuickPlayStatsDTO(
+public data class CompetitiveStats(
+    val season: Int,
+    val realSeason: Int,
     val gamesPlayed: Int,
     val gamesWon: Int,
     val gamesLost: Int,
@@ -11,5 +10,5 @@ internal data class QuickPlayStatsDTO(
     val mostPlayedHero: String,
     val mostPlayedHeroTimePlayed: String,
     val mostPlayedHeroGamesPlayed: Int,
-    val mostPlayedHeroWinPercentage: Int
+    val mostPlayedHeroWinPercentage: Int,
 )

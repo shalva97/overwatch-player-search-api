@@ -1,4 +1,4 @@
-package io.github.shalva97.overwatch_player_search_api.data.models.profile
+package io.github.shalva97.overwatch_player_search_api.data.models.compelte_profile
 
 import kotlinx.serialization.Serializable
 
