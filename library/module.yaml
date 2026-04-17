@@ -35,7 +35,7 @@ settings:
     serialization:
       json
   jvm:
-    release: 17
+    release: 21
   publishing:
     version: "2.1"
     group: "io.github.shalva97.overwatch_player_search_api"

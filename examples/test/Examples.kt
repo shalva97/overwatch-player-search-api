@@ -1,4 +1,5 @@
 import io.github.shalva97.overwatch_player_search_api.PlayerSearch
+import io.github.shalva97.overwatch_player_search_api.httpClient
 import kotlinx.coroutines.runBlocking
 import kotlin.test.Test
 
@@ -54,7 +55,7 @@ class Examples {
 
     @Test
     fun getPlayerProfile(): Unit = runBlocking {
-        val search = PlayerSearch()
+        val search = PlayerSearch(client = httpClient())
         val res = search.getPlayerProfileForPC("Senna#11894")
         println(res)
     }
