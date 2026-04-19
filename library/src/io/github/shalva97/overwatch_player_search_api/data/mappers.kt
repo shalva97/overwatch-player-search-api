@@ -42,7 +42,7 @@ internal fun PlayerProfileStatsDTO.toDomainModel(): PlayerProfileStats {
         endorsementIcon = endorsementIcon,
         ratings = ratings.toDomainModel(),
         private = private,
-        quickPlayStats = quickPlayStats.toDomainModel(),
+        quickPlayStats = quickplayStats.toDomainModel(),
         competitiveStats = competitiveStats.toDomainModel()
     )
 }
@@ -64,14 +64,9 @@ private fun CompetitiveStatsDTO.toDomainModel(): CompetitiveStats {
     return CompetitiveStats(
         season = season,
         realSeason = realSeason,
-        gamesPlayed = gamesPlayed,
-        gamesWon = gamesWon,
-        gamesLost = gamesLost,
         timePlayed = timePlayed,
         mostPlayedHero = mostPlayedHero,
         mostPlayedHeroTimePlayed = mostPlayedHeroTimePlayed,
-        mostPlayedHeroGamesPlayed = mostPlayedHeroGamesPlayed,
-        mostPlayedHeroWinPercentage = mostPlayedHeroWinPercentage
     )
 }
 

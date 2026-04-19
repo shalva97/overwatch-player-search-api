@@ -6,12 +6,7 @@ import kotlinx.serialization.Serializable
 internal data class CompetitiveStatsDTO(
     val season: Int,
     val realSeason: Int,
-    val gamesPlayed: Int,
-    val gamesWon: Int,
-    val gamesLost: Int,
     val timePlayed: String,
     val mostPlayedHero: String,
     val mostPlayedHeroTimePlayed: String,
-    val mostPlayedHeroGamesPlayed: Int,
-    val mostPlayedHeroWinPercentage: Int,
 )

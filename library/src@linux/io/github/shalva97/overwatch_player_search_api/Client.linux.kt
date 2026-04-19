@@ -1,7 +1,6 @@
 package io.github.shalva97.overwatch_player_search_api
 
 import io.ktor.client.HttpClient
-import io.ktor.client.engine.curl.Curl
 import io.ktor.client.engine.ProxyConfig
 
 public actual fun httpClient(
@@ -9,10 +8,5 @@ public actual fun httpClient(
     ignoreCertificateErrors: Boolean
 ): HttpClient {
     // Use Curl engine for Linux
-    return HttpClient(Curl) {
-        proxy?.let { engine {
-            this.proxy = it
-        } }
-        // Ignoring certificate errors is not implemented for simplicity
-    }
+    return HttpClient()
 }

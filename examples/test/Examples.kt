@@ -1,6 +1,9 @@
 import io.github.shalva97.overwatch_player_search_api.PlayerSearch
 import io.github.shalva97.overwatch_player_search_api.httpClient
+import io.ktor.client.engine.ProxyConfig
+import io.ktor.network.sockets.InetSocketAddress
 import kotlinx.coroutines.runBlocking
+import java.net.Proxy
 import kotlin.test.Test
 
 class Examples {
@@ -55,7 +58,13 @@ class Examples {
 
     @Test
     fun getPlayerProfile(): Unit = runBlocking {
-        val search = PlayerSearch(client = httpClient())
+        val proxy = Proxy(Proxy.Type.HTTP, java.net.InetSocketAddress("localhost", 9000))
+        val search = PlayerSearch(
+            client = httpClient(
+                proxy = proxy,
+                ignoreCertificateErrors = true
+            )
+        )
         val res = search.getPlayerProfileForPC("Senna#11894")
         println(res)
     }

@@ -13,6 +13,6 @@ internal data class PlayerProfileStatsDTO(
     val namecardImage: String? = null,
     val ratings: List<RatingDTO>? = null,
     val private: Boolean,
-    val quickPlayStats: QuickPlayStatsDTO,
+    val quickplayStats: QuickPlayStatsDTO,
     val competitiveStats: CompetitiveStatsDTO
 )
