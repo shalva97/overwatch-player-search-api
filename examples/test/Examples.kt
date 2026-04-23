@@ -7,64 +7,59 @@ import java.net.Proxy
 import kotlin.test.Test
 
 class Examples {
+
+    val proxy = Proxy(Proxy.Type.HTTP, java.net.InetSocketAddress("localhost", 9000))
+    val search = PlayerSearch(
+        client = httpClient(
+            proxy = proxy,
+            ignoreCertificateErrors = true
+        )
+    )
+
     @Test
     fun searchPlayer() = runBlocking {
-        val search = PlayerSearch()
         val res = search.searchForPlayer("khinkali")
         println(res)
     }
 
     @Test
     fun searchPlayer2() = runBlocking {
-        val search = PlayerSearch()
         val res = search.searchForPlayer("bigman")
         println(res)
     }
 
     @Test
     fun getCompletePlayerProfile(): Unit = runBlocking {
-        val search = PlayerSearch()
         val res = search.getCompletePlayerProfileForPC("Senna#11894")
         println(res)
     }
 
     @Test
     fun getConsoleStats() = runBlocking {
-        val search = PlayerSearch()
         val res = search.getCompletePlayerProfileForConsole("bigman#31423")
         println(res)
     }
 
     @Test
     fun showHeroStatistics_getTopHero() = runBlocking {
-        val search = PlayerSearch()
         val res = search.getCompletePlayerProfileForPC("shalva#21962")
         res.completeQuickPlayStats.topHeroes.take(3).println()
     }
 
     @Test
     fun showHeroStatistics_getCareerHeroStats() = runBlocking {
-        val search = PlayerSearch()
         val res = search.getCompletePlayerProfileForPC("shalva#21962")
         res.completeQuickPlayStats.careerStats.take(3).println()
     }
 
     @Test
     fun showHeroStatistics_getTopHeroes() = runBlocking {
-        val search = PlayerSearch()
         val res = search.getCompletePlayerProfileForPC("shalva#21962")
         res.completeCompetitiveStats.careerStats.take(3).println()
     }
 
     @Test
     fun getPlayerProfile(): Unit = runBlocking {
-        val proxy = Proxy(Proxy.Type.HTTP, java.net.InetSocketAddress("localhost", 9000))
-        val search = PlayerSearch(
-            client = httpClient(
-                proxy = proxy,
-                ignoreCertificateErrors = true
-            )
-        )
         val res = search.getPlayerProfileForPC("Senna#11894")
         println(res)
     }
